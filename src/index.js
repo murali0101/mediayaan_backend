@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-// const formidableMiddleware = require("express-formidable");
+
 var bodyParser = require("body-parser");
 const app = express();
 app.use("/files", express.static("./src/files"));
@@ -11,7 +11,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 // app.use(express.json());
-// app.use(formidableMiddleware());
 
 const { SignUp, LogIn } = require("./controllers/auth.controller");
 const stateController = require("./controllers/state.controller");
