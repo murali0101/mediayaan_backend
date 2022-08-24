@@ -28,6 +28,6 @@ app.use("/api/v1/users/signup", SignUp);
 app.use("/api/v1/users/login", LogIn);
 
 app.use("/api/v1/resource", stateController);
-app.use("/api/v1/users", stateStudent);
+app.use("/api/v1", stateStudent);
 
 module.exports = app;

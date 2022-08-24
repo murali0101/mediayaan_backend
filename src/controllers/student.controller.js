@@ -5,7 +5,7 @@ const Student = require("../models/student.model");
 
 const { v4: uuidv4 } = require("uuid");
 router.post(
-  "/post",
+  "/students",
 
   upload.fields([
     { name: "aadhaarCard", maxCount: 1 },
@@ -33,9 +33,9 @@ router.post(
         aadhaarCard: convertURL(req.files.aadhaarCard[0].path),
         whyInterested: convertURL(req.files.whyInterested[0].path),
         bestThingThatHappened: convertURL(
-          req.files.bestThingThatHappened[0].path
+          req.files.bestThingThatHappened[0]?.path
         ),
-        fiveYearsFromNow: convertURL(req.files.fiveYearsFromNow[0].path),
+        fiveYearsFromNow: convertURL(req.files.fiveYearsFromNow[0]?.path),
       };
 
       student = await Student.create(student);
@@ -46,12 +46,19 @@ router.post(
     }
   }
 );
-router.get("/getstudents", async (req, res) => {
+router.get("/users/getstudents", async (req, res) => {
   try {
     let student = await Student.find({ district: req.query.district })
       .lean()
       .exec();
     return res.status(200).send(student);
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+});
+router.get("/users/logout", async (req, res) => {
+  try {
+    return res.status(200).send("logout");
   } catch (error) {
     return res.status(500).send(error);
   }

@@ -7,3 +7,8 @@ const connectMongoDB = () => {
   );
 };
 module.exports = connectMongoDB;
+
+
+
+
+// mongodb+srv://murali:1234@backend.svdlc.mongodb.net/mediayaan_backend?retryWrites=true&w=majority
