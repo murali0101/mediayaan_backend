@@ -4,7 +4,7 @@ const cors = require("cors");
 
 var bodyParser = require("body-parser");
 const app = express();
-app.use("./files", express.static("files"));
+app.use("/files", express.static("files"));
 app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
