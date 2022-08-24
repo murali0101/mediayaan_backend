@@ -18,7 +18,10 @@ router.post(
     try {
       const convertURL = (url) => {
         let temp = url.split("\\");
-        temp = `${process.env.HOST}${temp[temp.length - 2]}/${
+        let host = `${process.env.HOST}`
+        host = host.replace("/undefined//app","");
+
+        temp = `${host}${temp[temp.length - 2]}/${
           temp[temp.length - 1]
         }`;
 
